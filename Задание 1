@@ -1,10 +1,10 @@
-```sql SELECT c.login,
+SELECT c.login,
 COUNT(o.id) AS "deliveryCount" 
 FROM "Couriers" AS c 
 LEFT JOIN "Orders" AS o ON c.id = o."courierId" 
 WHERE o."inDelivery" = true 
 GROUP BY c.login;
-```
+
 
 Результат:
 $ ssh 98e248ac-885b-4a18-9f98-ac6961ace44e@serverhub.praktikum-services.ru -p 4554
