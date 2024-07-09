@@ -1,0 +1,23 @@
+SELECT c.login,
+COUNT(o.id) AS "deliveryCount" 
+FROM "Couriers" AS c 
+LEFT JOIN "Orders" AS o ON c.id = o."courierId" 
+WHERE o."inDelivery" = true 
+GROUP BY c.login;
+
+
+Результат:
+$ ssh 98e248ac-885b-4a18-9f98-ac6961ace44e@serverhub.praktikum-services.ru -p 4554
+morty@54293d11e201:~$ psql -U morty -d scooter_rent
+Password for user morty:
+psql (11.18 (Debian 11.18-0+deb10u1))
+Type "help" for help.
+
+scooter_rent=# SELECT c.login, COUNT(o.id) AS "deliveryCount" FROM "Couriers" AS c LEFT JOIN "Orders" AS o ON c.id = o."courierId" WHERE o."inDelivery" = true GROUP BY c.login;
+ login  | deliveryCount
+--------+---------------
+ naruto |             2
+ sakura |             4
+(2 rows)
+
+scooter_rent=#
