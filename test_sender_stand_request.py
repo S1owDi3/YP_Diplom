@@ -1,4 +1,4 @@
-## Дмитрий Маслов, 18-я когорта — Финальный проект. Инженер по тестированию плюс
+# Дмитрий Маслов, 18-я когорта — Финальный проект. Инженер по тестированию плюс
 import requests
 import configuration
 import data
@@ -13,6 +13,7 @@ def post_new_order(order_body):
 def get_order_track(track):
     return requests.get(configuration.URL_SERVICE + configuration.CREATE_ORDER + '?t=' + str(track),
                         headers=data.headers)
+# Запрос на получение заказа по номеру заказа
 def test_order_can_be_retrieved_by_track_number():
     order_body = data.order_body
     resp_json = post_new_order(order_body).json()
