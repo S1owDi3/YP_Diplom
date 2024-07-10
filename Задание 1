@@ -1,7 +1,7 @@
 SELECT c.login,
 COUNT(o.id) AS "deliveryCount" 
 FROM "Couriers" AS c 
-INNER JOIN "Orders" AS o ON c.id = o."courierId"   #Целесообразней использовать INNER JOIN т.к. он удаляет все не подходящие поля и удовлетворяет условиям
+INNER JOIN "Orders" AS o ON c.id = o."courierId"   #Целесообразней использовать INNER JOIN т.к. он удаляет все не подходящие под условия поля
 WHERE o."inDelivery" = true 
 GROUP BY c.login;
 
