@@ -1,0 +1,20 @@
+SELECT c.login,
+COUNT(o.id) AS "deliveryCount" 
+FROM "Couriers" AS c 
+INNER JOIN "Orders" AS o ON c.id = o."courierId"   #Целесообразней использовать INNER JOIN т.к. он удаляет все не подходящие поля и удовлетворяет условиям
+WHERE o."inDelivery" = true 
+GROUP BY c.login;
+
+$ ssh 953de96b-b257-4dba-8f83-c4ea241660a3@serverhub.praktikum-services.ru -p 4554
+morty@b78e2ecc1df3:~$ psql -U morty -d scooter_rent
+Password for user morty:
+psql (11.18 (Debian 11.18-0+deb10u1))
+Type "help" for help.
+scooter_rent=#
+scooter_rent=# SELECT c.login, COUNT(o.id) AS "deliveryCount" FROM "Couriers" AS c INNER JOIN "Orders" AS o ON c.id = o."courierId" WHERE o."inDelivery" = true GROUP BY c.login;
+ login  | deliveryCount
+--------+---------------
+ naruto |             4
+ sakura |             2
+ saske  |             2
+(3 rows)
